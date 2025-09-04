@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息格式化</title>
+</head>
+<style>
+    .row1{
+        color: crimson;
+    }
+    .row2{
+        color: aqua;
+    }
+</style>
+<body>
+<h3>个人信息页面</h3>
+<h5>姓名:{{ name }} <br> 年龄:{{ age }} <br> 性别:{{ sex }} <br> 爱好: {{ likelist.1 }} </h5>
+<h6>循环标签1</h6>
+{% for like in likelist %}
+    <ul>
+        <li>{{like}}</li>
+    </ul>
+{% endfor %}
+
+<h6>循环标签2</h6>
+{% for key,value in info.items %}
+    <ul>
+        <li class="{% cycle 'row1' 'row2' %}">{{value}}</li>
+        {% if forloop.counter == 1 %}
+        <p>这是1</p>
+        {% elif forloop.counter > 1 and forloop.counter < 3 %}
+        <p>这是2</p>
+        {% else  %}
+        <p>这是3</p>
+        {% endif %}
+    </ul>
+{% empty %}
+<p>暂无内容</p>
+
+{% endfor %}
+
+<h5>TEST</h5>
+<ul class="row2">账号:{{ info.username }}</ul>
+<ul>密码:{{ info.password }}</ul>
+<ul>邮箱:{{ info.email }}</ul>
+</body>
+</html>

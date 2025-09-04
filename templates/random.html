@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>猜数字</title>
+
+</head>
+
+<body>
+<form action="" method="post">
+        {% csrf_token %}
+        <div>请输入你的数字(1-100):
+            <input type="number" name="guess" required>
+            <button type="submit">验证中</button>
+        </div>
+    </form>
+    {% if message %}
+    <p>{{message}}</p>
+    {% endif %}
+</body>
+</html>
